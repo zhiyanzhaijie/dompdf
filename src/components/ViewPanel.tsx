@@ -5,7 +5,9 @@ export default function ViewPanel() {
   const { pdfUrl, clearPdfData } = usePdf();
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const viewerUrl = `${window.location.origin}/web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
+  // Get base path from import.meta.env or construct from window.location
+  const base = import.meta.env.BASE_URL;
+  const viewerUrl = `${base}web/viewer.html?file=${encodeURIComponent(pdfUrl)}`;
 
   const handleConfirmClose = () => {
     clearPdfData();
